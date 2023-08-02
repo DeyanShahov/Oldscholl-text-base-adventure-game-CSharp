@@ -6,6 +6,10 @@
         {
             //Ints:
             int correct = 0;
+            int playerOneHanded = 0;
+            int playerTwoHanded = 0;
+            int playerRangedWeapon = 0;
+            int playerMagic = 0;
 
             //Strings:
             string gender;
@@ -31,7 +35,6 @@
 
             #endregion
 
-
             #region Race Creation:
             do
             {
@@ -50,7 +53,7 @@
                 {
 
                 }
-            }while (correct == 0);
+            } while (correct == 0);
             correct = 0;
 
             #endregion
@@ -68,13 +71,74 @@
 
                 classCh = Console.ReadLine().ToUpper();
 
-                if (classCh == "HUMAN" || classCh == "DWARF" || classCh == "ELF" || classCh == "ORC") correct = 1;
+                if (classCh == "WARIOR" || classCh == "HUNTER" || classCh == "MAGE" || classCh == "THIEF") correct = 1;
                 else
                 {
 
                 }
-            } while(correct == 0);
+            } while (correct == 0);
             correct = 0;
+
+            #endregion
+
+            #region Bonuses
+
+            #region Race Bonus
+
+            if (race == "HUMAN")
+            {
+                playerOneHanded++;
+                playerTwoHanded++;
+                playerRangedWeapon++;
+                playerMagic++;
+            }
+            if (race == "DWARF")
+            {
+                playerOneHanded++;
+                playerTwoHanded += 2;
+                playerRangedWeapon++;
+            }
+            if (race == "ELF")
+            {
+                playerOneHanded++;
+                playerRangedWeapon += 2;
+                playerMagic++;
+            }
+            if (race == "ORC")
+            {
+                playerOneHanded += 2;
+                playerTwoHanded += 2;
+            }
+
+            #endregion
+
+            #region Class Bonus
+
+            if (race == "WARIOR")
+            {
+                playerOneHanded += 2;
+                playerTwoHanded += 2;
+            }
+            if (race == "HUNTER")
+            {
+                playerOneHanded++;
+                playerTwoHanded++;
+                playerRangedWeapon += 2;
+            }
+            if (race == "MAGE")
+            {
+                playerOneHanded++;
+                playerRangedWeapon++;
+                playerMagic += 2;
+            }
+            if (race == "THIEF")
+            {
+                playerOneHanded += 2;
+                playerRangedWeapon++;
+                playerMagic++;
+            }
+
+            #endregion
 
             #endregion
 
