@@ -2,34 +2,20 @@
 
 namespace Oldscholl_text_base_adventure_game_C_
 {
-    internal class Program
+    public class Program
     {
         static void Main(string[] args)
         {
             //Ints:
-            int correct = 0;
-            int playerOneHandedWeaponSkill = 0;
-            int playerTwoHandedWeaponSkill = 0;
-            int playerRangedWeaponSkill = 0;
-            int playerMagicSkill = 0;
-            int arrayCount = 0;
-            int playerAttackType = 0;
-            int playerOneHandedWeaponDamage = 2;
-            int playerTwoHandedWeaponDamage = 2;
-            int playerRangedWeaponDamage = 2;
-            int playerMagicDamage = 2;
-            int playerHealthPoints = 20;
-            int playerManaPoints = 12;
+            int correct = 0;           
             int enemyHealthPoints;
             int enemyMaximumDamage;
 
-            //Strings:
-            string playerGender;
-            string playerRace;
-            string playerClass;
-            string[] inventory = new string[20];
+            //Strings:         
             string input;
             string enemyName;
+
+            Player player = new Player();
 
             #region Character Cration
             do
@@ -37,12 +23,12 @@ namespace Oldscholl_text_base_adventure_game_C_
                 Console.WriteLine("Place choose a gender as below: ");
                 Console.WriteLine("Male / Female");
 
-                playerGender = Console.ReadLine().ToUpper();
+                player.playerGender = Console.ReadLine().ToUpper();
 
-                if (playerGender == "FEMALE" || playerGender == "MALE" || playerGender == "F" || playerGender == "M")
+                if (player.playerGender == "FEMALE" || player.playerGender == "MALE" || player.playerGender == "F" || player.playerGender == "M")
                 {
-                    if (playerGender == "F") playerGender = "FEMALE";
-                    if (playerGender == "M") playerGender = "MALE";
+                    if (player.playerGender == "F") player.playerGender = "FEMALE";
+                    if (player.playerGender == "M") player.playerGender = "MALE";
 
                     correct = 1;
                 }
@@ -64,11 +50,11 @@ namespace Oldscholl_text_base_adventure_game_C_
                 Console.WriteLine("Orc");
                 Console.WriteLine("Your Choice: ");
 
-                playerRace = Console.ReadLine().ToUpper();
+                player.playerRace = Console.ReadLine().ToUpper();
 
-                if (playerRace == "HUMAN" || playerRace == "H")
+                if (player.playerRace == "HUMAN" || player.playerRace == "H")
                 {
-                    playerRace = CheckForSingleLatherInput(nameof(playerRace), playerRace);
+                    player.playerRace = CheckForSingleLatherInput(nameof(player.playerRace), player.playerRace);
 
                     Console.WriteLine("This race gives a bonuses to the following stats: ");
                     Console.WriteLine("One Handed Weapons. + 1 Point");
@@ -81,9 +67,9 @@ namespace Oldscholl_text_base_adventure_game_C_
                     correct = CheckYesOrNo(correct, input);
 
                 }
-                else if (playerRace == "DWARF" || playerRace == "D")
+                else if (player.playerRace == "DWARF" || player.playerRace == "D")
                 {
-                    playerRace = CheckForSingleLatherInput(nameof(playerRace), playerRace);
+                    player.playerRace = CheckForSingleLatherInput(nameof(player.playerRace), player.playerRace);
 
                     Console.WriteLine("This race gives a bonuses to the following stats: ");
                     Console.WriteLine("One Handed Weapons. + 1 Point");
@@ -95,9 +81,9 @@ namespace Oldscholl_text_base_adventure_game_C_
 
                     correct = CheckYesOrNo(correct, input);
                 }
-                else if (playerRace == "ELF" || playerRace == "E")
+                else if (player.playerRace == "ELF" || player.playerRace == "E")
                 {
-                    playerRace = CheckForSingleLatherInput(nameof(playerRace), playerRace);
+                    player.playerRace = CheckForSingleLatherInput(nameof(player.playerRace), player.playerRace);
 
                     Console.WriteLine("This race gives a bonuses to the following stats: ");
                     Console.WriteLine("One Handed Weapons. + 1 Point");
@@ -109,9 +95,9 @@ namespace Oldscholl_text_base_adventure_game_C_
 
                     correct = CheckYesOrNo(correct, input);
                 }
-                else if (playerRace == "ORC" || playerRace == "O")
+                else if (player.playerRace == "ORC" || player.playerRace == "O")
                 {
-                    playerRace = CheckForSingleLatherInput(nameof(playerRace), playerRace);
+                    player.playerRace = CheckForSingleLatherInput(nameof(player.playerRace), player.playerRace);
 
                     Console.WriteLine("This race gives a bonuses to the following stats: ");
                     Console.WriteLine("One Handed Weapons. + 2 Point");
@@ -139,11 +125,11 @@ namespace Oldscholl_text_base_adventure_game_C_
                 Console.WriteLine("Thief");
                 Console.WriteLine("Your Choice: ");
 
-                playerClass = Console.ReadLine().ToUpper();
+                player.playerClass = Console.ReadLine().ToUpper();
 
-                if (playerClass == "WARRIOR" || playerClass == "W")
+                if (player.playerClass == "WARRIOR" || player.playerClass == "W")
                 {
-                    playerClass = CheckForSingleLatherInput(nameof(playerClass), playerClass);
+                    player.playerClass = CheckForSingleLatherInput(nameof(player.playerClass), player.playerClass);
 
                     Console.WriteLine("This class gives a bonuses to the following stats: ");
                     Console.WriteLine("One Handed Weapons. + 2 Point");
@@ -156,9 +142,9 @@ namespace Oldscholl_text_base_adventure_game_C_
                     correct = CheckYesOrNo(correct, input);
 
                 }
-                else if (playerClass == "HUNTER" || playerClass == "H")
+                else if (player.playerClass == "HUNTER" || player.playerClass == "H")
                 {
-                    playerClass = CheckForSingleLatherInput(nameof(playerClass), playerClass);
+                    player.playerClass = CheckForSingleLatherInput(nameof(player.playerClass), player.playerClass);
 
                     Console.WriteLine("This class gives a bonuses to the following stats: ");
                     Console.WriteLine("One Handed Weapons. + 1 Point");
@@ -170,9 +156,9 @@ namespace Oldscholl_text_base_adventure_game_C_
 
                     correct = CheckYesOrNo(correct, input);
                 }
-                else if (playerClass == "MAGE" || playerClass == "M")
+                else if (player.playerClass == "MAGE" || player.playerClass == "M")
                 {
-                    playerClass = CheckForSingleLatherInput(nameof(playerClass), playerClass);
+                    player.playerClass = CheckForSingleLatherInput(nameof(player.playerClass), player.playerClass);
 
                     Console.WriteLine("This class gives a bonuses to the following stats: ");
                     Console.WriteLine("One Handed Weapons. + 1 Point");
@@ -184,9 +170,9 @@ namespace Oldscholl_text_base_adventure_game_C_
 
                     correct = CheckYesOrNo(correct, input);
                 }
-                else if (playerClass == "THIEF" || playerClass == "T")
+                else if (player.playerClass == "THIEF" || player.playerClass == "T")
                 {
-                    playerClass = CheckForSingleLatherInput(nameof(playerClass), playerClass);
+                    player.playerClass = CheckForSingleLatherInput(nameof(player.playerClass), player.playerClass);
 
                     Console.WriteLine("This class gives a bonuses to the following stats: ");
                     Console.WriteLine("One Handed Weapons. + 2 Point");
@@ -207,57 +193,57 @@ namespace Oldscholl_text_base_adventure_game_C_
 
             #region Race Bonus
 
-            if (playerRace == "HUMAN")
+            if (player.playerRace == "HUMAN")
             {
-                playerOneHandedWeaponSkill++;
-                playerTwoHandedWeaponSkill++;
-                playerRangedWeaponSkill++;
-                playerMagicSkill++;
+                player.playerOneHandedWeaponSkill++;
+                player.playerTwoHandedWeaponSkill++;
+                player.playerRangedWeaponSkill++;
+                player.playerMagicSkill++;
             }
-            if (playerRace == "DWARF")
+            if (player.playerRace == "DWARF")
             {
-                playerOneHandedWeaponSkill++;
-                playerTwoHandedWeaponSkill += 2;
-                playerRangedWeaponSkill++;
+                player.playerOneHandedWeaponSkill++;
+                player.playerTwoHandedWeaponSkill += 2;
+                player.playerRangedWeaponSkill++;
             }
-            if (playerRace == "ELF")
+            if (player.playerRace == "ELF")
             {
-                playerOneHandedWeaponSkill++;
-                playerRangedWeaponSkill += 2;
-                playerMagicSkill++;
+                player.playerOneHandedWeaponSkill++;
+                player.playerRangedWeaponSkill += 2;
+                player.playerMagicSkill++;
             }
-            if (playerRace == "ORC")
+            if (player.playerRace == "ORC")
             {
-                playerOneHandedWeaponSkill += 2;
-                playerTwoHandedWeaponSkill += 2;
+                player.playerOneHandedWeaponSkill += 2;
+                player.playerTwoHandedWeaponSkill += 2;
             }
 
             #endregion
 
             #region Class Bonus
 
-            if (playerClass == "WARRIOR")
+            if (player.playerClass == "WARRIOR")
             {
-                playerOneHandedWeaponSkill += 2;
-                playerTwoHandedWeaponSkill += 2;
+                player.playerOneHandedWeaponSkill += 2;
+                player.playerTwoHandedWeaponSkill += 2;
             }
-            if (playerClass == "HUNTER")
+            if (player.playerClass == "HUNTER")
             {
-                playerOneHandedWeaponSkill++;
-                playerTwoHandedWeaponSkill++;
-                playerRangedWeaponSkill += 2;
+                player.playerOneHandedWeaponSkill++;
+                player.playerTwoHandedWeaponSkill++;
+                player.playerRangedWeaponSkill += 2;
             }
-            if (playerClass == "MAGE")
+            if (player.playerClass == "MAGE")
             {
-                playerOneHandedWeaponSkill++;
-                playerRangedWeaponSkill++;
-                playerMagicSkill += 2;
+                player.playerOneHandedWeaponSkill++;
+                player.playerRangedWeaponSkill++;
+                player.playerMagicSkill += 2;
             }
-            if (playerClass == "THIEF")
+            if (player.playerClass == "THIEF")
             {
-                playerOneHandedWeaponSkill += 2;
-                playerRangedWeaponSkill++;
-                playerMagicSkill++;
+                player.playerOneHandedWeaponSkill += 2;
+                player.playerRangedWeaponSkill++;
+                player.playerMagicSkill++;
             }
 
             #endregion
@@ -267,20 +253,20 @@ namespace Oldscholl_text_base_adventure_game_C_
             //Player Description
             Console.Clear();
             Console.WriteLine("You full character description, is:");
-            Console.WriteLine("A {0} {1} {2}", playerGender, playerRace, playerClass);
-            Console.WriteLine("One handed weapon skill points: {0}", playerOneHandedWeaponSkill);
-            Console.WriteLine("Two handed weapon skill points: {0}", playerTwoHandedWeaponSkill);
-            Console.WriteLine("Ranged weapon skill points: {0}", playerRangedWeaponSkill);
-            Console.WriteLine("Magic attack skill points: {0}", playerMagicSkill);
+            Console.WriteLine("A {0} {1} {2}", player.playerGender, player.playerRace, player.playerClass);
+            Console.WriteLine("One handed weapon skill points: {0}", player.playerOneHandedWeaponSkill);
+            Console.WriteLine("Two handed weapon skill points: {0}", player.playerTwoHandedWeaponSkill);
+            Console.WriteLine("Ranged weapon skill points: {0}", player.playerRangedWeaponSkill);
+            Console.WriteLine("Magic attack skill points: {0}", player.playerMagicSkill);
             Console.ReadLine();
 
 
 
             #region Inventory
 
-            inventory[1] = "a";
-            inventory[2] = "b";
-            inventory[3] = "snails";
+            player.inventory[1] = "a";
+            player.inventory[2] = "b";
+            player.inventory[3] = "snails";
 
             Console.Clear();
             Console.WriteLine("Inventory Test: type inventory below");
@@ -290,11 +276,11 @@ namespace Oldscholl_text_base_adventure_game_C_
             {
                 Console.Clear();
                 Console.WriteLine("You Inventory contains: ");
-                for (arrayCount = 0; arrayCount < 20; arrayCount++)
+                for (player.arrayCount = 0; player.arrayCount < 20; player.arrayCount++)
                 {
                     //int inventoryPosition = arrayCount +1;
-                    Console.SetCursorPosition(0, arrayCount);
-                    Console.WriteLine("{0}", inventory[arrayCount]);
+                    Console.SetCursorPosition(0, player.arrayCount);
+                    Console.WriteLine("{0}", player.inventory[player.arrayCount]);
                 }
             }
             else
@@ -323,7 +309,7 @@ namespace Oldscholl_text_base_adventure_game_C_
             {
                 correct = 0;
                 Console.Clear();
-                Console.WriteLine("You Health is at {0} Points, You Mana is at {1} Points", playerHealthPoints, playerManaPoints);
+                Console.WriteLine("You Health is at {0} Points, You Mana is at {1} Points", player.playerHealthPoints, player.playerManaPoints);
                 Console.WriteLine("The {0}s Health is it {1} Points", enemyName, enemyHealthPoints);
                 Console.WriteLine("Enter the number for the type attack that you wish to perform:");
                 Console.WriteLine("1. One Handed Attack");
@@ -331,26 +317,26 @@ namespace Oldscholl_text_base_adventure_game_C_
                 Console.WriteLine("3. Ranged Weapon Attack");
                 Console.WriteLine("4. Magical Attack");
                 Console.Write("Your Choice: ");
-                playerAttackType = int.Parse(Console.ReadLine());
+                player.playerAttackType = int.Parse(Console.ReadLine());
 
-                if (playerAttackType == 1)
+                if (player.playerAttackType == 1)
                 {
-                    enemyHealthPoints = PlayerHitEnemy(playerOneHandedWeaponSkill, playerOneHandedWeaponDamage, enemyHealthPoints, enemyName);
+                    enemyHealthPoints = PlayerHitEnemy(player.playerOneHandedWeaponSkill, player.playerOneHandedWeaponDamage, enemyHealthPoints, enemyName);
                 }
 
-                if (playerAttackType == 2)
+                if (player.playerAttackType == 2)
                 {
-                    enemyHealthPoints = PlayerHitEnemy(playerTwoHandedWeaponSkill, playerTwoHandedWeaponDamage, enemyHealthPoints, enemyName);
+                    enemyHealthPoints = PlayerHitEnemy(player.playerTwoHandedWeaponSkill, player.playerTwoHandedWeaponDamage, enemyHealthPoints, enemyName);
                 }
 
-                if (playerAttackType == 3)
+                if (player.playerAttackType == 3)
                 {
-                    enemyHealthPoints = PlayerHitEnemy(playerRangedWeaponSkill, playerRangedWeaponDamage, enemyHealthPoints, enemyName);
+                    enemyHealthPoints = PlayerHitEnemy(player.playerRangedWeaponSkill, player.playerRangedWeaponDamage, enemyHealthPoints, enemyName);
                 }
 
-                if (playerAttackType == 4)
+                if (player.playerAttackType == 4)
                 {
-                    enemyHealthPoints = PlayerHitEnemy(playerMagicSkill, playerMagicDamage, enemyHealthPoints, enemyName);
+                    enemyHealthPoints = PlayerHitEnemy(player.playerMagicSkill, player.playerMagicDamage, enemyHealthPoints, enemyName);
                 }
 
                 if (enemyHealthPoints > 0)
@@ -358,16 +344,16 @@ namespace Oldscholl_text_base_adventure_game_C_
                     Random enemyDamageRoll = new Random();
                     int randomEnemyDamageRoll = enemyDamageRoll.Next(0, enemyMaximumDamage + 1);
                     Console.WriteLine("The {0} strikes back, and deal {1} points of damage", enemyName, randomEnemyDamageRoll);
-                    playerHealthPoints -= randomEnemyDamageRoll;
+                    player.playerHealthPoints -= randomEnemyDamageRoll;
                     Console.ReadLine();
                 }
 
-            } while (playerHealthPoints > 0 && enemyHealthPoints > 0);
+            } while (player.playerHealthPoints > 0 && enemyHealthPoints > 0);
 
             if (enemyHealthPoints <= 0) enemyHealthPoints = 0;
-            if (playerHealthPoints <= 0) playerHealthPoints = 0;
+            if (player.playerHealthPoints <= 0) player.playerHealthPoints = 0;
 
-            Console.WriteLine("You Health is at {0} Points, You Mana is at {1} Points", playerHealthPoints, playerManaPoints);
+            Console.WriteLine("You Health is at {0} Points, You Mana is at {1} Points", player.playerHealthPoints, player.playerManaPoints);
             Console.WriteLine("The {0}s Health is it {1} Points", enemyName, enemyHealthPoints);
             //Console.WriteLine("Enter the number for the type attack that you wish to perform:");
             //Console.WriteLine("1. One Handed Attack");
@@ -381,7 +367,7 @@ namespace Oldscholl_text_base_adventure_game_C_
                 Console.WriteLine(" - You lost the battle");
                 Console.ReadLine();
             }
-            if (playerHealthPoints > 0)
+            if (player.playerHealthPoints > 0)
             {
                 Console.WriteLine("");
                 Console.WriteLine(" - You win the battle");
