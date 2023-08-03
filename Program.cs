@@ -10,11 +10,14 @@
             int playerTwoHanded = 0;
             int playerRangedWeapon = 0;
             int playerMagic = 0;
+            int arrayCount = 0;
 
             //Strings:
             string gender;
             string race;
             string classCh;
+            string[] inventory = new string[20];
+            string input;
 
             #region Character Cration
             do
@@ -48,10 +51,58 @@
 
                 race = Console.ReadLine().ToUpper();
 
-                if (race == "HUMAN" || race == "DWARF" || race == "ELF" || race == "ORC") correct = 1;
-                else
+                if (race == "HUMAN")
                 {
+                    Console.WriteLine("This race gives a bonuses to the following stats: ");
+                    Console.WriteLine("One Handed Weapons. + 1 Point");
+                    Console.WriteLine("Two Handed Weapons. + 1 Point");
+                    Console.WriteLine("Ranged Weapons. + 1 Point");
+                    Console.WriteLine("Magical Attack. + 1 Point");
+                    Console.WriteLine("Is this the class you wish to play? Enter Yse/No below: ");
+                    input = Console.ReadLine().ToUpper();
 
+                    if (input == "YES") correct = 1;
+                    if (input == "NO") correct = 0;
+
+                }
+                else if (race == "DWARF")
+                {
+                    Console.WriteLine("This race gives a bonuses to the following stats: ");
+                    Console.WriteLine("One Handed Weapons. + 1 Point");
+                    Console.WriteLine("Two Handed Weapons. + 2 Point");
+                    Console.WriteLine("Ranged Weapons. + 1 Point");
+                    Console.WriteLine("Magical Attack. + 0 Point");
+                    Console.WriteLine("Is this the class you wish to play? Enter Yse/No below: ");
+                    input = Console.ReadLine().ToUpper();
+
+                    if (input == "YES") correct = 1;
+                    if (input == "NO") correct = 0;
+                }
+                else if (race == "ELF")
+                {
+                    Console.WriteLine("This race gives a bonuses to the following stats: ");
+                    Console.WriteLine("One Handed Weapons. + 1 Point");
+                    Console.WriteLine("Two Handed Weapons. + 0 Point");
+                    Console.WriteLine("Ranged Weapons. + 2 Point");
+                    Console.WriteLine("Magical Attack. + 1 Point");
+                    Console.WriteLine("Is this the class you wish to play? Enter Yse/No below: ");
+                    input = Console.ReadLine().ToUpper();
+
+                    if (input == "YES") correct = 1;
+                    if (input == "NO") correct = 0;
+                }
+                else if (race == "ORC")
+                {
+                    Console.WriteLine("This race gives a bonuses to the following stats: ");
+                    Console.WriteLine("One Handed Weapons. + 2 Point");
+                    Console.WriteLine("Two Handed Weapons. + 2 Point");
+                    Console.WriteLine("Ranged Weapons. + 0 Point");
+                    Console.WriteLine("Magical Attack. + 0 Point");
+                    Console.WriteLine("Is this the class you wish to play? Enter Yse/No below: ");
+                    input = Console.ReadLine().ToUpper();
+
+                    if (input == "YES") correct = 1;
+                    if (input == "NO") correct = 0;
                 }
             } while (correct == 0);
             correct = 0;
@@ -71,10 +122,58 @@
 
                 classCh = Console.ReadLine().ToUpper();
 
-                if (classCh == "WARIOR" || classCh == "HUNTER" || classCh == "MAGE" || classCh == "THIEF") correct = 1;
-                else
+                if (classCh == "WARIOR")
                 {
+                    Console.WriteLine("This class gives a bonuses to the following stats: ");
+                    Console.WriteLine("One Handed Weapons. + 2 Point");
+                    Console.WriteLine("Two Handed Weapons. + 2 Point");
+                    Console.WriteLine("Ranged Weapons. + 0 Point");
+                    Console.WriteLine("Magical Attack. + 0 Point");
+                    Console.WriteLine("Is this the class you wish to play? Enter Yse/No below: ");
+                    input = Console.ReadLine().ToUpper();
 
+                    if (input == "YES") correct = 1;
+                    if (input == "NO") correct = 0;
+
+                }
+                else if (classCh == "HUNTER")
+                {
+                    Console.WriteLine("This class gives a bonuses to the following stats: ");
+                    Console.WriteLine("One Handed Weapons. + 1 Point");
+                    Console.WriteLine("Two Handed Weapons. + 1 Point");
+                    Console.WriteLine("Ranged Weapons. + 2 Point");
+                    Console.WriteLine("Magical Attack. + 0 Point");
+                    Console.WriteLine("Is this the class you wish to play? Enter Yse/No below: ");
+                    input = Console.ReadLine().ToUpper();
+
+                    if (input == "YES") correct = 1;
+                    if (input == "NO") correct = 0;
+                }
+                else if (classCh == "MAGE")
+                {
+                    Console.WriteLine("This class gives a bonuses to the following stats: ");
+                    Console.WriteLine("One Handed Weapons. + 1 Point");
+                    Console.WriteLine("Two Handed Weapons. + 0 Point");
+                    Console.WriteLine("Ranged Weapons. + 1 Point");
+                    Console.WriteLine("Magical Attack. + 2 Point");
+                    Console.WriteLine("Is this the class you wish to play? Enter Yse/No below: ");
+                    input = Console.ReadLine().ToUpper();
+
+                    if (input == "YES") correct = 1;
+                    if (input == "NO") correct = 0;
+                }
+                else if (classCh == "THIEF")
+                {
+                    Console.WriteLine("This class gives a bonuses to the following stats: ");
+                    Console.WriteLine("One Handed Weapons. + 2 Point");
+                    Console.WriteLine("Two Handed Weapons. + 0 Point");
+                    Console.WriteLine("Ranged Weapons. + 1 Point");
+                    Console.WriteLine("Magical Attack. + 1 Point");
+                    Console.WriteLine("Is this the class you wish to play? Enter Yse/No below: ");
+                    input = Console.ReadLine().ToUpper();
+
+                    if (input == "YES") correct = 1;
+                    if (input == "NO") correct = 0;
                 }
             } while (correct == 0);
             correct = 0;
@@ -142,7 +241,35 @@
 
             #endregion
 
+            #region Inventory
 
+            inventory[1] = "a";
+            inventory[2] = "b";
+            inventory[3] = "snails";
+
+            Console.Clear();
+            Console.WriteLine("Inventory Test: type inventory below");
+            input = Console.ReadLine().ToUpper();
+
+            if (input == "INVENTORY")
+            {
+                Console.Clear();
+                Console.WriteLine("You Inventory contains: ");
+                for (arrayCount = 0; arrayCount < 20; arrayCount++)
+                {
+                    //int inventoryPossition = arrayCount +1;
+                    Console.SetCursorPosition(0, arrayCount);
+                    Console.WriteLine("{0}", inventory[arrayCount]);
+                }
+            }
+            else
+            {
+
+            }
+
+            Console.ReadLine();
+
+            #endregion
         }
     }
 }
