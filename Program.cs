@@ -14,9 +14,9 @@ namespace Oldscholl_text_base_adventure_game_C_
             int playerMagicSkill = 0;
             int arrayCount = 0;
             int playerAttackType = 0;
-            int playerOneHandedWeaponDanage = 2;
-            int playerTwoHandedWeaponDanage = 2;
-            int playerRangedWeaponDamge = 2;
+            int playerOneHandedWeaponDamage = 2;
+            int playerTwoHandedWeaponDamage = 2;
+            int playerRangedWeaponDamage = 2;
             int playerMagicDamage = 2;
             int playerHealthPoints = 20;
             int playerManaPoints = 12;
@@ -327,87 +327,40 @@ namespace Oldscholl_text_base_adventure_game_C_
                 Console.WriteLine("The {0}s Health is it {1} Points", enemyName, enemyHealthPoints);
                 Console.WriteLine("Enter the number for the type attack that you wish to perform:");
                 Console.WriteLine("1. One Handed Attack");
-                Console.WriteLine("1. Two Handed Attack");
-                Console.WriteLine("1. Ranged Weapon Attack");
-                Console.WriteLine("1. Magical Attack");
+                Console.WriteLine("2. Two Handed Attack");
+                Console.WriteLine("3. Ranged Weapon Attack");
+                Console.WriteLine("4. Magical Attack");
+                Console.Write("Your Choice: ");
                 playerAttackType = int.Parse(Console.ReadLine());
+
                 if (playerAttackType == 1)
                 {
-                    Random damageRoll = new Random();
-                    int randomDamageRoll = damageRoll.Next(0, playerOneHandedWeaponDanage);
-                    Console.WriteLine("{0}", randomDamageRoll);
-                    Random skillPointRoll = new Random();
-                    int skillPointOutcome = skillPointRoll.Next(0, 11);
-                    if (skillPointOutcome > 6 && randomDamageRoll > 0)
-                    {
-                        randomDamageRoll = randomDamageRoll + playerOneHandedWeaponSkill;
-                        Console.WriteLine("You did a critical hit, and added {0} Skill point of damage", playerOneHandedWeaponSkill);
-                    }
-                    Console.WriteLine("You did {0} Damage to the {1}", randomDamageRoll, enemyName);
-                    enemyHealthPoints -= randomDamageRoll;
+                    enemyHealthPoints = PlayerHitEnemy(playerOneHandedWeaponSkill, playerOneHandedWeaponDamage, enemyHealthPoints, enemyName);
                 }
 
                 if (playerAttackType == 2)
                 {
-                    Random damageRoll = new Random();
-                    int randomDamageRoll = damageRoll.Next(0, playerTwoHandedWeaponDanage);
-                    Console.WriteLine("{0}", randomDamageRoll);
-                    Random skillPointRoll = new Random();
-                    int skillPointOutcome = skillPointRoll.Next(0, 11);
-                    if (skillPointOutcome > 6 && randomDamageRoll > 0)
-                    {
-                        randomDamageRoll = randomDamageRoll + playerTwoHandedWeaponSkill;
-                        Console.WriteLine("You did a critical hit, and added {0} Skill point of damage", playerTwoHandedWeaponSkill);
-                    }
-
-                    Console.WriteLine("You did {0} Damage to the {1}", randomDamageRoll, enemyName);
-                    enemyHealthPoints -= randomDamageRoll;
+                    enemyHealthPoints = PlayerHitEnemy(playerTwoHandedWeaponSkill, playerTwoHandedWeaponDamage, enemyHealthPoints, enemyName);
                 }
 
                 if (playerAttackType == 3)
                 {
-                    Random damageRoll = new Random();
-                    int randomDamageRoll = damageRoll.Next(0, playerRangedWeaponDamge);
-                    Console.WriteLine("{0}", randomDamageRoll);
-                    Random skillPointRoll = new Random();
-                    int skillPointOutcome = skillPointRoll.Next(0, 11);
-                    if (skillPointOutcome > 6 && randomDamageRoll > 0)
-                    {
-                        randomDamageRoll = randomDamageRoll + playerRangedWeaponSkill;
-                        Console.WriteLine("You did a critical hit, and added {0} Skill point of damage", playerRangedWeaponSkill);
-                    }
-
-                    Console.WriteLine("You did {0} Damage to the {1}", randomDamageRoll, enemyName);
-                    enemyHealthPoints -= randomDamageRoll;
+                    enemyHealthPoints = PlayerHitEnemy(playerRangedWeaponSkill, playerRangedWeaponDamage, enemyHealthPoints, enemyName);
                 }
 
                 if (playerAttackType == 4)
                 {
-                    Random damageRoll = new Random();
-                    int randomDamageRoll = damageRoll.Next(0, playerMagicDamage);
-                    Console.WriteLine("{0}", randomDamageRoll);
-                    Random skillPointRoll = new Random();
-                    int skillPointOutcome = skillPointRoll.Next(0, 11);
-                    if (skillPointOutcome > 6 && randomDamageRoll > 0)
-                    {
-                        randomDamageRoll = randomDamageRoll + playerMagicSkill;
-                        Console.WriteLine("You did a critical hit, and added {0} Skill point of damage", playerMagicSkill);
-                    }
-
-                    Console.WriteLine("You did {0} Damage to the {1}", randomDamageRoll, enemyName);
-                    enemyHealthPoints -= randomDamageRoll;
+                    enemyHealthPoints = PlayerHitEnemy(playerMagicSkill, playerMagicDamage, enemyHealthPoints, enemyName);
                 }
 
                 if (enemyHealthPoints > 0)
                 {
                     Random enemyDamageRoll = new Random();
-                    int randomEnemyDamageRoll = enemyDamageRoll.Next(0, enemyMaximumDamage);
+                    int randomEnemyDamageRoll = enemyDamageRoll.Next(0, enemyMaximumDamage + 1);
                     Console.WriteLine("The {0} strikes back, and deal {1} points of damage", enemyName, randomEnemyDamageRoll);
                     playerHealthPoints -= randomEnemyDamageRoll;
                     Console.ReadLine();
                 }
-
-                Console.ReadLine();
 
             } while (playerHealthPoints > 0 && enemyHealthPoints > 0);
 
@@ -416,11 +369,11 @@ namespace Oldscholl_text_base_adventure_game_C_
 
             Console.WriteLine("You Health is at {0} Points, You Mana is at {1} Points", playerHealthPoints, playerManaPoints);
             Console.WriteLine("The {0}s Health is it {1} Points", enemyName, enemyHealthPoints);
-            Console.WriteLine("Enter the number for the type attack that you wish to perform:");
-            Console.WriteLine("1. One Handed Attack");
-            Console.WriteLine("1. Two Handed Attack");
-            Console.WriteLine("1. Ranged Weapon Attack");
-            Console.WriteLine("1. Magical Attack");
+            //Console.WriteLine("Enter the number for the type attack that you wish to perform:");
+            //Console.WriteLine("1. One Handed Attack");
+            //Console.WriteLine("1. Two Handed Attack");
+            //Console.WriteLine("1. Ranged Weapon Attack");
+            //Console.WriteLine("1. Magical Attack");
 
             if (enemyHealthPoints > 0)
             {
@@ -437,8 +390,24 @@ namespace Oldscholl_text_base_adventure_game_C_
 
             #endregion
 
-
             Console.ReadLine();
+        }
+
+        private static int PlayerHitEnemy(int playerCurrentSkill, int playerCurrentDamage, int enemyHealthPoints, string enemyName)
+        {
+            Random damageRoll = new Random();
+            int randomDamageRoll = damageRoll.Next(0, playerCurrentDamage + 1);
+            //Console.WriteLine("{0}", randomDamageRoll);
+            Random skillPointRoll = new Random();
+            int skillPointOutcome = skillPointRoll.Next(0, 11);
+            if (skillPointOutcome > 6 && randomDamageRoll > 0)
+            {
+                randomDamageRoll = randomDamageRoll + playerCurrentSkill;
+                Console.WriteLine("You did a critical hit, and added {0} Skill point of damage", playerCurrentSkill);
+            }
+            Console.WriteLine("You did {0} Damage to the {1}", randomDamageRoll, enemyName);
+            enemyHealthPoints -= randomDamageRoll;
+            return enemyHealthPoints;
         }
 
         private static int CheckYesOrNo(int correct, string input)
