@@ -262,35 +262,35 @@ namespace Oldscholl_text_base_adventure_game_C_
 
 
 
-            #region Inventory
+            //#region Inventory
 
-            player.inventory[1] = "a";
-            player.inventory[2] = "b";
-            player.inventory[3] = "snails";
+            //player.inventory[1] = "a";
+            //player.inventory[2] = "b";
+            //player.inventory[3] = "snails";
 
-            Console.Clear();
-            Console.WriteLine("Inventory Test: type inventory below");
-            input = Console.ReadLine().ToUpper();
+            //Console.Clear();
+            //Console.WriteLine("Inventory Test: type inventory below");
+            //input = Console.ReadLine().ToUpper();
 
-            if (input == "INVENTORY" || input == "I")
-            {
-                Console.Clear();
-                Console.WriteLine("You Inventory contains: ");
-                for (player.arrayCount = 0; player.arrayCount < 20; player.arrayCount++)
-                {
-                    //int inventoryPosition = arrayCount +1;
-                    Console.SetCursorPosition(0, player.arrayCount);
-                    Console.WriteLine("{0}", player.inventory[player.arrayCount]);
-                }
-            }
-            else
-            {
+            //if (input == "INVENTORY" || input == "I")
+            //{
+            //    Console.Clear();
+            //    Console.WriteLine("You Inventory contains: ");
+            //    for (player.arrayCount = 0; player.arrayCount < 20; player.arrayCount++)
+            //    {
+            //        //int inventoryPosition = arrayCount +1;
+            //        Console.SetCursorPosition(0, player.arrayCount);
+            //        Console.WriteLine("{0}", player.inventory[player.arrayCount]);
+            //    }
+            //}
+            //else
+            //{
 
-            }
+            //}
 
-            Console.ReadLine();
+            //Console.ReadLine();
 
-            #endregion
+            //#endregion
 
 
             //Enemy declair system
@@ -299,80 +299,200 @@ namespace Oldscholl_text_base_adventure_game_C_
             enemyMaximumDamage = 2;
 
 
-            #region Combat System
+//            #region Combat System
 
-            //Random number between 0 and 100 ( 100 not included )
-            Random random = new Random();
-            int randomNumber = random.Next(0, 100);
+//            //Random number between 0 and 100 ( 100 not included )
+//            Random random = new Random();
+//            int randomNumber = random.Next(0, 100);
+
+//            do
+//            {
+//                correct = 0;
+//                Console.Clear();
+//                Console.WriteLine("You Health is at {0} Points, You Mana is at {1} Points", player.playerHealthPoints, player.playerManaPoints);
+//                Console.WriteLine("The {0}s Health is it {1} Points", enemyName, enemyHealthPoints);
+//                Console.WriteLine("Enter the number for the type attack that you wish to perform:");
+//                Console.WriteLine("1. One Handed Attack");
+//                Console.WriteLine("2. Two Handed Attack");
+//                Console.WriteLine("3. Ranged Weapon Attack");
+//                Console.WriteLine("4. Magical Attack");
+//                Console.Write("Your Choice: ");
+//                player.playerAttackType = int.Parse(Console.ReadLine());
+
+//                if (player.playerAttackType == 1)
+//                {
+//                    enemyHealthPoints = PlayerHitEnemy(player.playerOneHandedWeaponSkill, player.playerOneHandedWeaponDamage, enemyHealthPoints, enemyName);
+//                }
+
+//                if (player.playerAttackType == 2)
+//                {
+//                    enemyHealthPoints = PlayerHitEnemy(player.playerTwoHandedWeaponSkill, player.playerTwoHandedWeaponDamage, enemyHealthPoints, enemyName);
+//                }
+
+//                if (player.playerAttackType == 3)
+//                {
+//                    enemyHealthPoints = PlayerHitEnemy(player.playerRangedWeaponSkill, player.playerRangedWeaponDamage, enemyHealthPoints, enemyName);
+//                }
+
+//                if (player.playerAttackType == 4)
+//                {
+//                    enemyHealthPoints = PlayerHitEnemy(player.playerMagicSkill, player.playerMagicDamage, enemyHealthPoints, enemyName);
+//                }
+
+//                if (enemyHealthPoints > 0)
+//                {
+//                    Random enemyDamageRoll = new Random();
+//                    int randomEnemyDamageRoll = enemyDamageRoll.Next(0, enemyMaximumDamage + 1);
+//                    Console.WriteLine("The {0} strikes back, and deal {1} points of damage", enemyName, randomEnemyDamageRoll);
+//                    player.playerHealthPoints -= randomEnemyDamageRoll;
+//                    Console.ReadLine();
+//                }
+
+//            } while (player.playerHealthPoints > 0 && enemyHealthPoints > 0);
+
+//            if (enemyHealthPoints <= 0) enemyHealthPoints = 0;
+//            if (player.playerHealthPoints <= 0) player.playerHealthPoints = 0;
+
+//            Console.WriteLine("You Health is at {0} Points, You Mana is at {1} Points", player.playerHealthPoints, player.playerManaPoints);
+//            Console.WriteLine("The {0}s Health is it {1} Points", enemyName, enemyHealthPoints);
+//            //Console.WriteLine("Enter the number for the type attack that you wish to perform:");
+//            //Console.WriteLine("1. One Handed Attack");
+//            //Console.WriteLine("1. Two Handed Attack");
+//            //Console.WriteLine("1. Ranged Weapon Attack");
+//            //Console.WriteLine("1. Magical Attack");
+
+//            if (enemyHealthPoints > 0)
+//            {
+//                Console.WriteLine("");
+//                Console.WriteLine(" - You lost the battle");
+//                Console.ReadLine();
+//            }
+//            if (player.playerHealthPoints > 0)
+//            {
+//                Console.WriteLine("");
+//                Console.WriteLine(" - You win the battle");
+//                Console.ReadLine();
+//            }
+
+//#endregion
+
+            #region Quest
+            //Quest giving system
+            player.questRewardExp = 20;
+            player.questRewardGold = 50;
+            player.playerQuestGoal = 3;
+            player.playerQuestEnemy = "Rats";
 
             do
             {
                 correct = 0;
                 Console.Clear();
-                Console.WriteLine("You Health is at {0} Points, You Mana is at {1} Points", player.playerHealthPoints, player.playerManaPoints);
-                Console.WriteLine("The {0}s Health is it {1} Points", enemyName, enemyHealthPoints);
-                Console.WriteLine("Enter the number for the type attack that you wish to perform:");
-                Console.WriteLine("1. One Handed Attack");
-                Console.WriteLine("2. Two Handed Attack");
-                Console.WriteLine("3. Ranged Weapon Attack");
-                Console.WriteLine("4. Magical Attack");
-                Console.Write("Your Choice: ");
-                player.playerAttackType = int.Parse(Console.ReadLine());
-
-                if (player.playerAttackType == 1)
+                if (player.playerQuest != "")
                 {
-                    enemyHealthPoints = PlayerHitEnemy(player.playerOneHandedWeaponSkill, player.playerOneHandedWeaponDamage, enemyHealthPoints, enemyName);
+                    Console.WriteLine("You have to finish your current quest, in order to get a new one.");
+                    correct = 1;
                 }
 
-                if (player.playerAttackType == 2)
+                if (player.playerQuest == "")
                 {
-                    enemyHealthPoints = PlayerHitEnemy(player.playerTwoHandedWeaponSkill, player.playerTwoHandedWeaponDamage, enemyHealthPoints, enemyName);
+                    Console.WriteLine("I would gladly pay you to kill the {0} {1}, that annoying me, out on my fields.", player.playerQuestGoal, player.playerQuestEnemy);
+                    Console.WriteLine("Reward: {0} Gold, and {1} EXP", player.questRewardGold, player.questRewardExp);
+                    Console.WriteLine("Accept: Yes/No");
+                    input = Console.ReadLine().ToUpper();
+                    if (input == "NO")
+                    {
+                        correct = 1;
+                        player.questAccepted = "NO";
+                    }
+                    if (input == "YES")
+                    {
+                        Console.WriteLine("The quest has been accepted.");
+                        player.playerQuest = "The farmer would gladly pay you 50 Gold and give you 20 Exp, to rid his fields of the 3 rats.";
+                        correct = 1;
+                        player.questAccepted = "YES";
+                    }
                 }
+            } while (correct == 0);
+            Console.ReadLine();
 
-                if (player.playerAttackType == 3)
-                {
-                    enemyHealthPoints = PlayerHitEnemy(player.playerRangedWeaponSkill, player.playerRangedWeaponDamage, enemyHealthPoints, enemyName);
-                }
-
-                if (player.playerAttackType == 4)
-                {
-                    enemyHealthPoints = PlayerHitEnemy(player.playerMagicSkill, player.playerMagicDamage, enemyHealthPoints, enemyName);
-                }
-
-                if (enemyHealthPoints > 0)
-                {
-                    Random enemyDamageRoll = new Random();
-                    int randomEnemyDamageRoll = enemyDamageRoll.Next(0, enemyMaximumDamage + 1);
-                    Console.WriteLine("The {0} strikes back, and deal {1} points of damage", enemyName, randomEnemyDamageRoll);
-                    player.playerHealthPoints -= randomEnemyDamageRoll;
-                    Console.ReadLine();
-                }
-
-            } while (player.playerHealthPoints > 0 && enemyHealthPoints > 0);
-
-            if (enemyHealthPoints <= 0) enemyHealthPoints = 0;
-            if (player.playerHealthPoints <= 0) player.playerHealthPoints = 0;
-
-            Console.WriteLine("You Health is at {0} Points, You Mana is at {1} Points", player.playerHealthPoints, player.playerManaPoints);
-            Console.WriteLine("The {0}s Health is it {1} Points", enemyName, enemyHealthPoints);
-            //Console.WriteLine("Enter the number for the type attack that you wish to perform:");
-            //Console.WriteLine("1. One Handed Attack");
-            //Console.WriteLine("1. Two Handed Attack");
-            //Console.WriteLine("1. Ranged Weapon Attack");
-            //Console.WriteLine("1. Magical Attack");
-
-            if (enemyHealthPoints > 0)
+            //Menu writeout
+            do
             {
-                Console.WriteLine("");
-                Console.WriteLine(" - You lost the battle");
-                Console.ReadLine();
-            }
-            if (player.playerHealthPoints > 0)
-            {
-                Console.WriteLine("");
-                Console.WriteLine(" - You win the battle");
-                Console.ReadLine();
-            }
+                correct = 0;
+                Console.Clear();
+                Console.WriteLine("Enter Quest, to see your current quest.");
+                Console.WriteLine("Enter Inventory, to see your Inventory content.");
+                Console.WriteLine("Enter Status, to see in detail how your character is doing.");
+                Console.WriteLine("Enter Exit, to quit the menu.");
+                input = Console.ReadLine().ToUpper();
+
+                if (input == "QUEST" && player.playerQuest != "")
+                {
+                    do
+                    {
+                        Console.Clear();
+                        Console.WriteLine(player.playerQuest);
+                        Console.WriteLine("Progress: {0}/{1} {2}", player.playerQuestProgress, player.playerQuestGoal, player.playerQuestEnemy);
+                        Console.WriteLine("< Back");
+                        input = Console.ReadLine().ToUpper();
+                        if (input == "BACK") correct = 1;
+                    } while (correct == 0);
+                }
+
+                if (input == "QUEST" && player.playerQuest == "")
+                {
+                    do
+                    {
+                        Console.Clear();
+                        Console.WriteLine("You don not have any active quests at the moment.");
+                        Console.WriteLine("< Back");
+                        input = Console.ReadLine().ToUpper();
+                        if (input == "BACK") correct = 1;
+                    } while (correct == 0);
+                }
+
+                if (input == "INVENTORY" || input == "I")
+                {
+                    do
+                    {
+                        Console.Clear();
+                        Console.WriteLine("You inventory contains: ");
+                        for (player.arrayCount = 0; player.arrayCount < 20; player.arrayCount++)
+                        {
+                            int inventoryPosition = player.arrayCount + 1;
+                            Console.SetCursorPosition(0, inventoryPosition);
+                            Console.WriteLine("{0}", player.inventory[player.arrayCount]);
+                        }
+                        Console.WriteLine("< Back");
+                        input = Console.ReadLine().ToUpper();
+                        if (input == "BACK") correct = 1;
+                        if (input != "BACK") correct = 0;
+                    } while (correct == 0);
+                }
+
+                if (input == "STATUS" || input == "S")
+                {
+                    do
+                    {
+                        Console.Clear();
+                        Console.WriteLine("You character is:");
+                        Console.WriteLine("A {0} {1} {2}", player.playerGender, player.playerRace, player.playerClass);
+                        Console.WriteLine("One handed weapon skill points: {0}", player.playerOneHandedWeaponSkill);
+                        Console.WriteLine("Two handed weapon skill points: {0}", player.playerTwoHandedWeaponSkill);
+                        Console.WriteLine("Ranged weapon skill points: {0}", player.playerRangedWeaponSkill);
+                        Console.WriteLine("Magic attack skill points: {0}", player.playerMagicSkill);
+                        Console.WriteLine("{0} Health points, {1} Mana points, {2} Experience points"
+                            , player.playerHealthPoints, player.playerManaPoints, player.playerExperience);
+                        Console.WriteLine("< Back");
+                        input = Console.ReadLine().ToUpper();
+                        if (input == "BACK") correct = 1;
+                        if (input != "BACK") correct = 0;
+                    } while (correct == 0);
+                }
+
+                if (input == "EXIT") correct = 2;
+
+            } while (correct != 2);
 
             #endregion
 
