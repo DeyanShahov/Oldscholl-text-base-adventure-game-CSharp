@@ -1,4 +1,6 @@
-﻿namespace Oldscholl_text_base_adventure_game_C_
+﻿using System.Security.Cryptography.X509Certificates;
+
+namespace Oldscholl_text_base_adventure_game_C_
 {
     internal class Program
     {
@@ -37,11 +39,14 @@
 
                 playerGender = Console.ReadLine().ToUpper();
 
-                if (playerGender == "FEMALE" || playerGender == "MALE") correct = 1;
-                else
+                if (playerGender == "FEMALE" || playerGender == "MALE" || playerGender == "F" || playerGender == "M")
                 {
+                    if (playerGender == "F") playerGender = "FEMALE";
+                    if (playerGender == "M") playerGender = "MALE";
 
+                    correct = 1;
                 }
+
 
             } while (correct == 0);
             correct = 0;
@@ -61,8 +66,10 @@
 
                 playerRace = Console.ReadLine().ToUpper();
 
-                if (playerRace == "HUMAN")
+                if (playerRace == "HUMAN" || playerRace == "H")
                 {
+                    playerRace = CheckForSingleLatherInput(nameof(playerRace), playerRace);
+
                     Console.WriteLine("This race gives a bonuses to the following stats: ");
                     Console.WriteLine("One Handed Weapons. + 1 Point");
                     Console.WriteLine("Two Handed Weapons. + 1 Point");
@@ -71,12 +78,13 @@
                     Console.WriteLine("Is this the class you wish to play? Enter Yse/No below: ");
                     input = Console.ReadLine().ToUpper();
 
-                    if (input == "YES") correct = 1;
-                    if (input == "NO") correct = 0;
+                    correct = CheckYesOrNo(correct, input);
 
                 }
-                else if (playerRace == "DWARF")
+                else if (playerRace == "DWARF" || playerRace == "D")
                 {
+                    playerRace = CheckForSingleLatherInput(nameof(playerRace), playerRace);
+
                     Console.WriteLine("This race gives a bonuses to the following stats: ");
                     Console.WriteLine("One Handed Weapons. + 1 Point");
                     Console.WriteLine("Two Handed Weapons. + 2 Point");
@@ -85,11 +93,12 @@
                     Console.WriteLine("Is this the class you wish to play? Enter Yse/No below: ");
                     input = Console.ReadLine().ToUpper();
 
-                    if (input == "YES") correct = 1;
-                    if (input == "NO") correct = 0;
+                    correct = CheckYesOrNo(correct, input);
                 }
-                else if (playerRace == "ELF")
+                else if (playerRace == "ELF" || playerRace == "E")
                 {
+                    playerRace = CheckForSingleLatherInput(nameof(playerRace), playerRace);
+
                     Console.WriteLine("This race gives a bonuses to the following stats: ");
                     Console.WriteLine("One Handed Weapons. + 1 Point");
                     Console.WriteLine("Two Handed Weapons. + 0 Point");
@@ -98,11 +107,12 @@
                     Console.WriteLine("Is this the class you wish to play? Enter Yse/No below: ");
                     input = Console.ReadLine().ToUpper();
 
-                    if (input == "YES") correct = 1;
-                    if (input == "NO") correct = 0;
+                    correct = CheckYesOrNo(correct, input);
                 }
-                else if (playerRace == "ORC")
+                else if (playerRace == "ORC" || playerRace == "O")
                 {
+                    playerRace = CheckForSingleLatherInput(nameof(playerRace), playerRace);
+
                     Console.WriteLine("This race gives a bonuses to the following stats: ");
                     Console.WriteLine("One Handed Weapons. + 2 Point");
                     Console.WriteLine("Two Handed Weapons. + 2 Point");
@@ -111,8 +121,7 @@
                     Console.WriteLine("Is this the class you wish to play? Enter Yse/No below: ");
                     input = Console.ReadLine().ToUpper();
 
-                    if (input == "YES") correct = 1;
-                    if (input == "NO") correct = 0;
+                    correct = CheckYesOrNo(correct, input);
                 }
             } while (correct == 0);
             correct = 0;
@@ -132,8 +141,10 @@
 
                 playerClass = Console.ReadLine().ToUpper();
 
-                if (playerClass == "WARIOR")
+                if (playerClass == "WARRIOR" || playerClass == "W")
                 {
+                    playerClass = CheckForSingleLatherInput(nameof(playerClass), playerClass);
+
                     Console.WriteLine("This class gives a bonuses to the following stats: ");
                     Console.WriteLine("One Handed Weapons. + 2 Point");
                     Console.WriteLine("Two Handed Weapons. + 2 Point");
@@ -142,12 +153,13 @@
                     Console.WriteLine("Is this the class you wish to play? Enter Yse/No below: ");
                     input = Console.ReadLine().ToUpper();
 
-                    if (input == "YES") correct = 1;
-                    if (input == "NO") correct = 0;
+                    correct = CheckYesOrNo(correct, input);
 
                 }
-                else if (playerClass == "HUNTER")
+                else if (playerClass == "HUNTER" || playerClass == "H")
                 {
+                    playerClass = CheckForSingleLatherInput(nameof(playerClass), playerClass);
+
                     Console.WriteLine("This class gives a bonuses to the following stats: ");
                     Console.WriteLine("One Handed Weapons. + 1 Point");
                     Console.WriteLine("Two Handed Weapons. + 1 Point");
@@ -156,11 +168,12 @@
                     Console.WriteLine("Is this the class you wish to play? Enter Yse/No below: ");
                     input = Console.ReadLine().ToUpper();
 
-                    if (input == "YES") correct = 1;
-                    if (input == "NO") correct = 0;
+                    correct = CheckYesOrNo(correct, input);
                 }
-                else if (playerClass == "MAGE")
+                else if (playerClass == "MAGE" || playerClass == "M")
                 {
+                    playerClass = CheckForSingleLatherInput(nameof(playerClass), playerClass);
+
                     Console.WriteLine("This class gives a bonuses to the following stats: ");
                     Console.WriteLine("One Handed Weapons. + 1 Point");
                     Console.WriteLine("Two Handed Weapons. + 0 Point");
@@ -169,11 +182,12 @@
                     Console.WriteLine("Is this the class you wish to play? Enter Yse/No below: ");
                     input = Console.ReadLine().ToUpper();
 
-                    if (input == "YES") correct = 1;
-                    if (input == "NO") correct = 0;
+                    correct = CheckYesOrNo(correct, input);
                 }
-                else if (playerClass == "THIEF")
+                else if (playerClass == "THIEF" || playerClass == "T")
                 {
+                    playerClass = CheckForSingleLatherInput(nameof(playerClass), playerClass);
+
                     Console.WriteLine("This class gives a bonuses to the following stats: ");
                     Console.WriteLine("One Handed Weapons. + 2 Point");
                     Console.WriteLine("Two Handed Weapons. + 0 Point");
@@ -182,8 +196,7 @@
                     Console.WriteLine("Is this the class you wish to play? Enter Yse/No below: ");
                     input = Console.ReadLine().ToUpper();
 
-                    if (input == "YES") correct = 1;
-                    if (input == "NO") correct = 0;
+                    correct = CheckYesOrNo(correct, input);
                 }
             } while (correct == 0);
             correct = 0;
@@ -223,24 +236,24 @@
 
             #region Class Bonus
 
-            if (playerRace == "WARIOR")
+            if (playerClass == "WARRIOR")
             {
                 playerOneHandedWeaponSkill += 2;
                 playerTwoHandedWeaponSkill += 2;
             }
-            if (playerRace == "HUNTER")
+            if (playerClass == "HUNTER")
             {
                 playerOneHandedWeaponSkill++;
                 playerTwoHandedWeaponSkill++;
                 playerRangedWeaponSkill += 2;
             }
-            if (playerRace == "MAGE")
+            if (playerClass == "MAGE")
             {
                 playerOneHandedWeaponSkill++;
                 playerRangedWeaponSkill++;
                 playerMagicSkill += 2;
             }
-            if (playerRace == "THIEF")
+            if (playerClass == "THIEF")
             {
                 playerOneHandedWeaponSkill += 2;
                 playerRangedWeaponSkill++;
@@ -273,7 +286,7 @@
             Console.WriteLine("Inventory Test: type inventory below");
             input = Console.ReadLine().ToUpper();
 
-            if (input == "INVENTORY")
+            if (input == "INVENTORY" || input == "I")
             {
                 Console.Clear();
                 Console.WriteLine("You Inventory contains: ");
@@ -328,7 +341,7 @@
                     if (skillPointOutcome > 6 && randomDamageRoll > 0)
                     {
                         randomDamageRoll = randomDamageRoll + playerOneHandedWeaponSkill;
-                        Console.WriteLine("You did a critical hit, and added {0} Skill point of damage", playerOneHandedWeaponSkill);                    
+                        Console.WriteLine("You did a critical hit, and added {0} Skill point of damage", playerOneHandedWeaponSkill);
                     }
                     Console.WriteLine("You did {0} Damage to the {1}", randomDamageRoll, enemyName);
                     enemyHealthPoints -= randomDamageRoll;
@@ -426,6 +439,48 @@
 
 
             Console.ReadLine();
+        }
+
+        private static int CheckYesOrNo(int correct, string input)
+        {
+            if (input == "YES" || input == "Y") correct = 1;
+            if (input == "NO" || input == "N") correct = 0;
+            return correct;
+        }
+
+        private static string CheckForSingleLatherInput(string parameterName, string value)
+        {
+            if (parameterName == "playerRace" && value.Length == 1)
+            {
+                switch (value)
+                {
+                    case "H":
+                        return "HUMAN";
+                    case "D":
+                        return "DWARF";
+                    case "E":
+                        return "ELF";
+                    case "O":
+                        return "ORC";
+                };
+            }
+
+            if (parameterName == "playerClass" && value.Length == 1)
+            {
+                switch (value)
+                {
+                    case "W":
+                        return "WARRIOR";
+                    case "H":
+                        return "HUNTER";
+                    case "M":
+                        return "MAGE";
+                    case "T":
+                        return "THIEF";
+                };
+            }
+
+            return value;
         }
     }
 }
